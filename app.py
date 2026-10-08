@@ -54,6 +54,10 @@ st.markdown("""
         border-radius: 8px;
         margin-bottom: 20px;
     }
+    .stTextInput label, .stNumberInput label, .stSelectbox label {
+        color: #1e293b !important;
+        font-weight: 600 !important;
+    }
     .stTextInput input, .stNumberInput input, div[data-baseweb="select"] > div, div[data-baseweb="input"] {
         border-radius: 8px !important;
         border: 1px solid #94a3b8 !important;
