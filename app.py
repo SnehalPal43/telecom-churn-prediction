@@ -54,14 +54,11 @@ st.markdown("""
         border-radius: 8px;
         margin-bottom: 20px;
     }
-    .stTextInput label, .stNumberInput label, .stSelectbox label {
-        color: #1e293b !important;
-        font-weight: 600 !important;
-    }
     .stTextInput input, .stNumberInput input, div[data-baseweb="select"] > div, div[data-baseweb="input"] {
         border-radius: 8px !important;
         border: 1px solid #94a3b8 !important;
         background-color: #ffffff !important;
+        color: #1e293b !important;
     }
     .stButton>button {
         background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
@@ -75,6 +72,12 @@ st.markdown("""
     .stButton>button:hover {
         background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
         color: white;
+    }
+    [data-testid="stMetricLabel"] {
+        color: #475569 !important;
+    }
+    [data-testid="stMetricValue"] {
+        color: #1e293b !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -129,16 +132,16 @@ if st.session_state.page == "Home":
     st.markdown('<p class="sub-heading">A machine learning platform designed to analyze subscriber behavior and predict customer churn with high precision.</p>', unsafe_allow_html=True)
     
     if data is not None:
-        # 1. Project Highlights & Metrics Box
+        # Project Highlights & Metrics Box
         with st.container(border=True):
-            st.markdown("### 📊 Project Metrics")
+            st.markdown("### 📊 Project Highlights & Metrics")
             m1, m2, m3, m4 = st.columns(4)
             m1.metric("Total Subscribers", f"{len(data):,}")
             m2.metric("Features Analyzed", f"{data.shape[1]}")
             m3.metric("ML Algorithm", "Random Forest")
             m4.metric("System Status", "Operational ⚡")
         
-        # 2. Action Buttons Right After the Metrics Box
+        # Action Buttons Right After the Metrics Box
         st.markdown("<br>", unsafe_allow_html=True)
         hb1, hb2 = st.columns(2)
         with hb1:
@@ -151,10 +154,10 @@ if st.session_state.page == "Home":
                 st.rerun()
         st.markdown("<br>", unsafe_allow_html=True)
 
-        # 3. Dataset Preview Box
+        # Dataset Preview Box
         with st.container(border=True):
             st.subheader("📋 Dataset Preview")
-            st.dataframe(data.head(100), use_container_width=True)
+            st.dataframe(data.head(10), use_container_width=True)
 
 elif st.session_state.page == "Prediction Engine":
     st.markdown('<p class="section-heading">🔮 Customer Churn Prediction Engine</p>', unsafe_allow_html=True)
